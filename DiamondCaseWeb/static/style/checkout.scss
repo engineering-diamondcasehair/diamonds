@@ -1,0 +1,29 @@
+@import "constants";
+
+#checkout-form-header,
+#checkout-form-body {
+  color: white;
+}
+
+#checkout-form-body {
+  background-color: $primary-color-light;
+  color: $primary-text-color;
+}
+
+#checkout-button {
+  background-color: black;
+  color: white;
+}
+
+#checkout-section-cart {
+  background-color: $primary-color-light;
+  color: $primary-text-color;
+}
+
+#checkout-button {
+  width: 100%;
+}
+
+#checkout-item-number {
+  color: $primary-text-color;
+}

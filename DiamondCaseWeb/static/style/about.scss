@@ -1,0 +1,33 @@
+@import "constants";
+body {
+  color: $secondary-text-color;
+}
+
+.social-button {
+  background-color: $secondary-color-ldark;
+  color: $secondary-text-color;
+  font-size: 36px;
+}
+
+#snapchat:hover {
+  background-color: #fefc00;
+  color: #030303;
+  border-color: #ffffff;
+}
+
+#instagram:hover {
+  background-color: #8a3ab9;
+  color: #fbad50;
+  border-color: #fccc63;
+}
+
+#linkedin:hover {
+  background-color: #0077b5;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.card {
+  background-color: $primary-color-light;
+  color: $primary-text-color;
+}

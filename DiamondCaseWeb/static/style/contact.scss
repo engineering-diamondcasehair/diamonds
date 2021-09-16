@@ -1,0 +1,9 @@
+@import "constants";
+body {
+  color: $secondary-text-color;
+}
+form,
+.side {
+  background-color: $primary-color-light;
+  color: $primary-text-color;
+}

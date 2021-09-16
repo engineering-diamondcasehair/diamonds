@@ -1,0 +1,39 @@
+@import "constants";
+
+.item-card {
+  background-color: $secondary-color-light;
+  color: $secondary-text-color;
+  a {
+    color: $secondary-text-color;
+  }
+}
+
+.summary {
+  background-color: $primary-color;
+}
+
+.quantity-display {
+  color: $secondary-text-color;
+}
+
+#cart-page-title {
+  color: white;
+}
+
+.cart-more-info {
+  float: right;
+}
+
+#cart-summary-section {
+  background-color: $primary-color-light;
+}
+
+#checkout-link {
+  background-color: $secondary-color;
+  color: $secondary-text-color;
+  width: 100%;
+}
+
+.cart-item-trash {
+  cursor: pointer;
+}

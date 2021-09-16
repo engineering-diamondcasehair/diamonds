@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<body ng-app="myApp">
+
+<p><a href="#/!">Main</a></p>
+
+<a href="#!red">Red</a>
+<a href="#!green">Green</a>
+<a href="#!blue">Blue</a>
+
+<div ng-view></div>
+
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+  $routeProvider
+  .when("/", {
+    templateUrl : "main.htm",
+    controller : "HomeCtrl"
+  })
+  .when("/london", {
+    templateUrl : "london.htm",
+    controller : "londonCtrl"
+  })
+  .when("/paris", {
+    templateUrl : "paris.htm",
+    controller : "parisCtrl"
+  }).when("/london", {
+    templateUrl : "london.htm",
+    controller : "londonCtrl"
+  })
+  .when("/paris", {
+    templateUrl : "paris.htm",
+    controller : "parisCtrl"
+  })
+  .when("/london", {
+    templateUrl : "london.htm",
+    controller : "londonCtrl"
+  })
+  .when("/paris", {
+    templateUrl : "paris.htm",
+    controller : "parisCtrl"
+  })
+  .when("/london", {
+    templateUrl : "london.htm",
+    controller : "londonCtrl"
+  })
+  .when("/paris", {
+    templateUrl : "paris.htm",
+    controller : "parisCtrl"
+  });
+});
+
+app.controller("homeCtrl", function ($scope) {
+  $scope.msg = "I love London";
+});
+
+app.controller("londonCtrl", function ($scope) {
+  $scope.msg = "I love London";
+});
+
+app.controller("parisCtrl", function ($scope) {
+  $scope.msg = "I love Paris";
+});
+
+</script>
+</body>
+</html>
+
+

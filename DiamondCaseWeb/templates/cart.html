@@ -1,0 +1,42 @@
+{% extends "partial/base.html" %}
+{% block title %} 
+Cart
+{% endblock %}
+
+{% block html_head %}
+<script src="{{ url_for('static', filename='script/cart.js') }}"></script>
+{% assets "cart_css" %}
+<link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+   <div class="row">
+      {# Item List #}
+      <div class="col-md-9  pb-5">
+         <h1 id="cart-page-title" class="display-1 my-5">Shoppig Cart</h1>
+         {% for item in data.products %}
+         {% include 'partial/cart/list_item.html' %}
+         {% include 'partial/cart/modal.html' %}
+         {% endfor %}
+      </div>
+      {# Summary #}
+      <div id="cart-summary-section" class="col-md-3  pb-5 pt-5 summary">
+         <h2>Summary</h2>
+         <hr/>
+         <div>
+            <span>3</span> items
+         </div>
+         <hr/>
+         <div>
+            Total Price: <span id="cart-total-price"></span>
+         </div>
+         <a href="{{url_for('checkout')}}"><button id="checkout-link" class="btn mt-4"> Checkout</button></a>
+      </div>
+   </div>
+</div>
+<script type="text/javascript">
+   updatePrice();
+</script>
+{% endblock %}

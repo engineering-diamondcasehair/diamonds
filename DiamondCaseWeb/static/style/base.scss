@@ -1,0 +1,66 @@
+// base.scss
+@import "constants";
+
+#navigation-header {
+  background-color: $primary-color;
+
+  div a img {
+    width: 180px;
+    height: 40px;
+  }
+
+  li a {
+    color: $primary-text-color;
+    text-decoration: none;
+  }
+
+  .navbar-toggler {
+    background-color: $secondary-color;
+  }
+
+  form input {
+    background-color: white;
+    color: $primary-text-color;
+  }
+
+  form button {
+    background-color: $secondary-color-light;
+    color: $secondary-text-color;
+  }
+}
+
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+
+#lblCartCount {
+  font-size: 12px;
+  background: #ff0000;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -10px;
+}
+
+#homepage-featured a {
+  color: $secondary-text-color;
+}
+
+#homepage-featured p {
+  color: $secondary-text-color;
+}
+
+#footer,
+#footer a {
+  background: $primary-color;
+  color: $primary-text-color;
+}

@@ -1,0 +1,50 @@
+{% extends "partial/base.html" %}
+{% block title %} 
+Products 
+{% endblock %}
+
+{% block html_head %}
+<script src="{{ url_for('static', filename='script/machine_product.js') }}"></script>
+{% assets "machine_product_css" %}
+<link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block content %}
+<h1 class="display-1"> Kiest Location: </h1>
+<div id='product-menu-header' class="row">
+   {% for category in data %}
+   {% if category.products %}
+   <div class="product-menu-category col-sm-4 col-md-2 col-lg-2">
+      <a href="#product-category-{{category.id}}">
+         <h3>{{ category.category }}</h3>
+      </a>
+   </div>
+   {% else %}
+   <div class="product-menu-category-disabled col-sm-4 col-md-2 col-lg-2">
+      <a class="no-hover" href="">
+         <h3>{{ category.category }}</h3>
+      </a>
+   </div>
+   {% endif %}
+   {% endfor %}
+</div>
+{# Category #}
+{% for category in data %}
+{% if category.products %}
+<div id="product-category-{{category.id}}" class="product-category row content">
+   <h2 class="display-2"> {{category.category}}: </h2>
+   <br/>
+   <div class="container-fluid">
+      <div class="machine-product-category row flex-row flex-nowrap product-menu-scroll">
+         {% for product in category.products %}
+         {% include 'partial/machine_product/product_card.html' %}
+         {% endfor %}
+      </div>
+   </div>
+   <br/>
+</div>
+<hr/>
+{% endif %}
+{% endfor %}
+{% endblock %}

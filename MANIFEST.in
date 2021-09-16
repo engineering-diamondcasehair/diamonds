@@ -1,0 +1,6 @@
+recursive-include DiamondCaseWeb/api *
+recursive-include DiamondCaseWeb/model *
+recursive-include DiamondCaseWeb/static *
+recursive-include DiamondCaseWeb/templates *
+recursive-include DiamondCaseWeb/util *
+recursive-include DiamondCaseWeb/view_blueprint *

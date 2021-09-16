@@ -1,0 +1,31 @@
+{% extends "partial/base.html" %}
+{% block title %} 
+Product example for Bootstrap
+{% endblock %}
+{% block html_head %}
+<script src="{{ url_for('static', filename='script/help.js') }}"></script>
+{% assets "help_css" %}
+<link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+{% block content %}
+<main role="main">
+   <!-- Main jumbotron for a primary marketing message or call to action -->
+   <div class="jumbotron p-3 ">
+      <div class="container">
+         <h1 class="display-3">Help Articles</h1>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+   </div>
+   {# Help Article Card List  #}
+   <div class="container">
+      <div class="row justify-content-center mt-4">
+         {% for artile in data.articles %}
+         {% include 'partial/help/card.html' %}
+         {% endfor %}
+      </div>
+      <hr>
+   </div>
+   <!-- /container -->
+</main>
+{% endblock %}

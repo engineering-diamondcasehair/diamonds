@@ -1,0 +1,48 @@
+# Diamond Case Web App
+This is the source code for the Diamond Case Beuaty Supply Web application. This app is built in flask and python. The Following instruction show how to How to get setup
+
+## Installation
+1. install virtual enviroment
+```sh
+$ python3 -m venv
+```
+
+2. Activate virtual enviroment
+```sh
+$ source venv/bin/activate
+```
+
+3. Install required dependecies
+```sh
+$ pip3 install -r requirements.txt
+```
+
+4. Set app enviroment variable
+```sh
+$ export FLASK_APP=DiamondCaseWeb
+```
+
+5. Initialize dev and test databases
+```sh
+$ python3 DiamondCaseWeb.model/__init__.py
+```
+
+6. Start app
+```sh
+$ flask run
+```
+
+## Unit Testing
+After making any changes please runt units. Early and often is the best.
+```sh
+$ python3 DiamondCaseWeb/api/test.py
+$ python3 DiamondCaseWeb/model/test.py
+$ python3 DiamondCaseWeb/util/test.py
+```
+
+
+## Integration Testing
+Start the app and in a second terminal window run 
+```sh
+$ python3 DiamondCaseWeb/test.py
+```

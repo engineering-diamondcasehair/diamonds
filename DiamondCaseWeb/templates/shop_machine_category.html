@@ -1,0 +1,151 @@
+{% extends "partial/base.html" %}
+{% block title %} 
+Products 
+{% endblock %}
+
+{% block html_head %}
+<script src="{{ url_for('static', filename='script/shop_machine_category.js') }}"></script>
+{% assets "shop_machine_category_css" %}
+<link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block content %}
+<h1> Catgory 1: </h1>
+<div id="prodct-category-view" class="row align-items-center">
+   <div class="product-category-product col-xs-12 col-lg-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <div class="card  bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+   <!-- Modal -->
+   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               ...
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="product-category-product col-xs-12 col-lg-4">
+      <div class="card bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+   <div class="product-category-product col-xs-12 col-lg-4">
+      <div class="card bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+   <div class="product-category-product col-xs-12 col-lg-4">
+      <div class="card bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+   <div class="product-category-product col-xs-12 col-lg-4">
+      <div class="card bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+   <div class="product-category-product col-xs-12 col-lg-4">
+      <div class="card bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+   <div class="product-category-product col-xs-12 col-lg-4">
+      <div class="card bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+   <div class="product-category-product col-xs-12 col-lg-4">
+      <div class="card bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+   <div class="product-category-product col-xs-12 col-lg-4">
+      <div class="card bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+   <div class="product-category-product col-xs-12 col-lg-4">
+      <div class="card bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+   <div class="product-category-product col-xs-12 col-lg-4">
+      <div class="card bg-dark text-white" style="margin: 25px;">
+         <img src="http://placekitten.com/800/500" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="row justify-content-md-center">
+   <nav aria-label="Page navigation example">
+      <ul class="pagination pagination-lg justify-content-center">
+      </ul>
+   </nav>
+</div>
+{% endblock %}

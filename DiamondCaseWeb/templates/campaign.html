@@ -1,0 +1,21 @@
+{% extends "partial/base.html" %}
+{% block title %} 
+Product example for Bootstrap
+{% endblock %}
+
+{% block html_head %}
+<script src="{{ url_for('static', filename='script/campaign_highlight.js') }}"></script>
+{% assets "campaign_highlight_css" %}
+<link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block content %}
+<main role="main" class="container">
+   <div class="starter-template">
+      <h1>Bootstrap starter template</h1>
+      <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+   </div>
+</main>
+<!-- /.container -->
+{% endblock %}

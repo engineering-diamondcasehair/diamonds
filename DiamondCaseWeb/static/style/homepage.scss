@@ -1,0 +1,76 @@
+@import "constants";
+#homepage-atf-wrapper {
+  position: relative;
+  height: 100%;
+  width: auto;
+}
+
+#homepage-video-text {
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+#homepage-video-text h1,
+#homepage-video-text h2 {
+  margin: 30px 0px;
+}
+
+#homepage-video-text button.cta {
+  margin: 30px 0px;
+  background-color: rgba(107, 166, 256, 1);
+  font-size: 36px;
+  padding: 10px 20px;
+}
+
+#homepage-video-wrapper {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+#homepage-video-video {
+  // max-height: 100%;
+  min-height: 600px;
+  overflow: hidden;
+  width: 100%;
+}
+
+#homepage-main {
+  color: #ffffff;
+}
+
+#homepage-main h3 {
+  text-align: center;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(256, 256, 256, 1);
+}
+
+#homepage-featured {
+  a {
+    text-decoration: none;
+  }
+  img {
+    margin: 0 auto;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  p {
+    color: $secondary-text-color;
+  }
+  .homepage-download-app {
+    blackground-color: black;
+  }
+}

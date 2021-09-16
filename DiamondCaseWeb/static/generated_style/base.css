@@ -1,0 +1,44 @@
+#navigation-header {
+  background-color: #42a5f5; }
+  #navigation-header div a img {
+    width: 180px;
+    height: 40px; }
+    #navigation-header li a {
+      color: #000000;
+      text-decoration: none; }
+      #navigation-header .navbar-toggler {
+        background-color: #212121; }
+        #navigation-header form input {
+          background-color: white;
+          color: #000000; }
+          #navigation-header form button {
+            background-color: #484848;
+            color: #ffffff; }
+
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px; }
+
+  .label-warning[href], .badge-warning[href] {
+    background-color: #c67605; }
+
+    #lblCartCount {
+      font-size: 12px;
+      background: #ff0000;
+      color: #fff;
+      padding: 0 5px;
+      vertical-align: top;
+      margin-left: -10px; }
+
+      #homepage-featured a {
+        color: #ffffff; }
+
+        #homepage-featured p {
+          color: #ffffff; }
+
+          #footer, #footer a {
+            background: #42a5f5;
+            color: #000000; }

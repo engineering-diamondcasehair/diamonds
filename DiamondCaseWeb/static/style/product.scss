@@ -1,0 +1,55 @@
+div.product-menu-scroll {
+  background-color: #333;
+  overflow: auto;
+}
+
+h1,
+h2 {
+  color: white;
+}
+
+.card:hover {
+  background-color: #777;
+  cursor: pointer;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.product-menu-catagory {
+  text-align: center;
+  border-style: solid;
+  border-color: white;
+  border-width: 3px;
+  background-color: #6ba6ff;
+}
+
+a {
+  text-decoration: none;
+}
+
+.product-catagory a {
+  color: white;
+}
+
+#product-menu-header a {
+  color: black;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+  padding-top: 60px;
+}
+
+.product-catagory {
+  scroll-margin-top: 100px;
+}
+
+#product-category-link {
+  text-align: left;
+  font-size: 40px;
+}

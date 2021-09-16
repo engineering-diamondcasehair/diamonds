@@ -1,0 +1,66 @@
+# Mac Specific files
+**/.DS_Store
+
+# Tracking 
+TODO
+
+# Development
+venv/*
+*.db
+*.log
+
+# Byte compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extension 
+*.so
+
+# distribution / packing
+.Python
+bin/
+build/
+develop-eggs/
+dist/
+download/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+Manifest
+
+# Installer Logs
+pips-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Rope 
+.ropeproject
+
+# Django Stuff
+*.og
+*.pot
+
+# Sphinx Documentation
+/docs/_build/

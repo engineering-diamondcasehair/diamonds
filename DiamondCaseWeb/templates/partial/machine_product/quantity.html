@@ -1,0 +1,14 @@
+{# Quantity Control #}
+<div class="quantity" data-quantity=0 data-max={{product.max}}>
+   {# Add to Cart Button #}
+   <button class="btn btn-primary add-to-cart-btn" data-id="0" style="width: 100%;">Go Add To Cart</button>
+   {# - {quantity} + button Group #}
+   <div class="btn-group" role="group" aria-label="quantity-picker" data-id=0 style="width: 100%; display: none;">
+      {# Minus Sign #}
+      <button type="button" class="btn btn-primary minus"> - </button>
+      {# Quantity Display #}
+      <button class='shop-product-quantity' type="button" class="btn btn-secondary btn-lg" style=" width:  33%;font-size: 48px; font-weight: 700; color:black;" disabled> 0 </button>
+      {# Plus Display #}
+      <button type="button" class="btn btn-primary plus"> + </button>
+   </div>
+</div>

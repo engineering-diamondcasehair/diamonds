@@ -1,0 +1,72 @@
+{% extends "partial/base.html" %}
+{% block title %} 
+Products 
+{% endblock %}
+
+{% block html_head %}
+<script src="{{ url_for('static', filename='script/product.js') }}"></script>
+{% assets "product_css" %}
+<link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block content %}
+<h1> Browses our Products: </h1>
+<div id='product-menu-header' class="row">
+   {% for category in data %} 
+   <div class="product-menu-catagory col-sm-4 col-md-2 col-lg-2">
+      <a href="#product-catagory-{{category.id}}">
+         <h3>{{category.category}}</h3>
+      </a>
+   </div>
+   {% endfor %}
+</div>
+{# Catagory Row #}
+{% for category in data %} 
+<div id="product-catagory-1" class="product-catagory row content">
+   <h2> {{category.category}}: </h2>
+   <br/>
+   <div class="container-fluid">
+      <div  class="product-category-category row flex-row flex-nowrap product-menu-scroll">
+         {# Product Item #}
+         {% for item in category.products %}
+         <div class="col-xs-7 col-sm-4 col-md-3 col-lg-3">
+            <div class="card" data-bs-toggle="modal" data-bs-target="#modal-{{item.id}}">
+               <img src="{{item.image}}" class="card-img-top" alt="...">
+               <div class="card-body">
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p class="card-text">{{item.description}}</p>
+               </div>
+            </div>
+         </div>
+         {# Modal #}
+         <div class="modal fade" id="modal-{{item.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-{{item.id}}-label" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <img src="{{item.image}}" class="card-img-top" alt="...">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="modal-{{item.id}}-label">{{item.name}}</h5>
+                  </div>
+                  <div class="modal-body">
+                     {{item.description}}
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary float-left" data-bs-dismiss="modal">Close</button>
+                     <button type="button" class="btn btn-primary float-right">Find a Location with this product</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+</div>
+<br/>
+<a href="{{url_for('category', category_id=category.id)}}"><span id="product-category-link" >See all {{category.category}} <i class="fas fa-arrow-right"></i></span></a>
+</div>
+<hr/>
+{% endfor %}
+<script type="text/javascript">
+   setupFixedCategoryMenu();
+</script>
+{% endblock %}

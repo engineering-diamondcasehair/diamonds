@@ -1,0 +1,33 @@
+{# Item List Item #}
+<div class="item-card row  py-5">
+   <div class="col-2">
+      <img class='img-fluid' src="{{item['images']['thumbnail']}}">
+   </div>
+   <div class="col-5">
+      <h2>{{item.name}}</h2>
+      <br/>
+      <p class="lead">{{item.short_description}}</p>
+      <br/>
+      <span class="cart-more-info"><button type="button" data-bs-toggle="modal" data-bs-target="#modal-{{item.id}}"> more info</button></span>
+   </div>
+   <div class="cart-item col-4 text-center"  data-quantity={{item.quantity}} data-price={{item.price}} data-max={{item.max}}>
+      <div class="col-12">
+         <div class="btn-group mt-4">
+            <button class="minus btn btn-primary"> - </button>
+            <button class="btn quantity-display" disabled> {{item.quantity}} </button>
+            <button class="plus btn btn-primary"> + </button>
+         </div>
+      </div>
+      <div class="col-12">
+         <div class="price-display mt-4">
+            {{"${:,.2f}".format(item.quantity * item.price)}} 
+         </div>
+      </div>
+   </div>
+   <div class="col-1">
+      <div class="mt-4">
+         <i class="cart-item-trash fa fa-trash align-middle" aria-hidden="true"></i>
+      </div>
+   </div>
+</div>
+<hr/>
