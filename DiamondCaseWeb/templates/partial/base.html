@@ -21,6 +21,9 @@
       {% assets "base_css" %}
       <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
       {% endassets %}
+      {% assets "header_css" %}
+      <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+      {% endassets %}
       {# Import Content Specific CSS #}
       {% block html_head %}{% endblock %}
       <title>{% block title %}{% endblock %} - Diamond Case Beuty Supply</title>

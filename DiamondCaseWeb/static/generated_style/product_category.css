@@ -1,0 +1,6 @@
+h1 {
+  color: #6ba6ff; }
+
+  .card:hover {
+    background-color: #777;
+    cursor: pointer; }

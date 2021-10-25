@@ -1,3 +1,4 @@
+"""Blueprint for static pages."""
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from flask import Blueprint, render_template, abort, request
@@ -13,7 +14,7 @@ blueprint = Blueprint('static', __name__)
 db = SQLAlchemy()
 
 class ContactForm(Form):
-
+    """WTForm implementation of contact form."""
     name = StringField('Name', [validators.Length(min=2, max=25)])
     email = StringField('Email Address', [validators.Length(min=6,
                         max=60)])
@@ -24,7 +25,11 @@ class ContactForm(Form):
 @blueprint.route('/')
 @blueprint.route('/index')
 def index():
+    """View Function for home page.
 
+    Returns:
+        rendered template of view
+    """
     # TODO: Change data model
 
     features = HomepageFeature.query.filter_by(is_active=True).all()
@@ -33,11 +38,21 @@ def index():
 
 @blueprint.route('/about')
 def about():
+    """View Function for about page.
+
+    Returns:
+        rendered template of view
+    """
     return render_template('about.html', categories=getCategories())
 
 
 @blueprint.route('/help')
 def help():
+    """View Function for help page.
+
+    Returns:
+        rendered template of view
+    """
     help_articles = HelpArticle.query.all()
     return render_template('help.html', 
         help_articles=help_articles, 
@@ -46,11 +61,21 @@ def help():
 
 @blueprint.route('/terms')
 def terms():
+    """View Function for term of service page.
+
+    Returns:
+        rendered template of view
+    """
     return render_template('terms.html', categories=getCategories())
 
 
 @blueprint.route('/contact', methods=['GET', 'POST'])
 def contact():
+    """View Function for contact page.
+
+    Returns:
+        rendered template of view
+    """
     form = ContactForm(request.form)
     if request.method == 'POST' and form.validate():
         dc_mail.send_message(sender=(form.name.data, form.email.data),

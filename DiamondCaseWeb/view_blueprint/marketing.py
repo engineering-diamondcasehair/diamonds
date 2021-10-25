@@ -1,3 +1,4 @@
+"""Blueprint for marketing pages."""
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from flask import Blueprint, render_template, abort
@@ -10,5 +11,10 @@ db = SQLAlchemy()
 
 @blueprint.route('/campaign')
 def campaign():
+    """View Function for campaign pages.
+
+    Returns:
+        rendered template of view.
+        """
     return render_template('campaign.html', 
         categories=getCategories())

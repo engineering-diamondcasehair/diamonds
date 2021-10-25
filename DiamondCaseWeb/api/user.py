@@ -1,3 +1,5 @@
+"""API code for Users."""
+
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import datetime
@@ -11,11 +13,16 @@ from flask_restful import Resource
 from flask_restful import url_for
 from dateutil import parser as date_parser
 
-
+# Register blueprint For user Api
 blueprint = Blueprint('user_api', __name__)
 api = Api(blueprint)
 
 def abort_if_user_doesnt_exist(user_id):
+    """Checks to see if User record with id={user_id} exist, if not the function aborts the requset with 404 status code.
+
+    Args:
+        location_id(int): Id of location to retrieve
+    """
     if not UserModel.query.get(user_id):
         abort(404,
               message="user_id {} doesn't exist".format(user_id))
@@ -61,12 +68,29 @@ parser.add_argument('banned',
 
 
 class User(Resource):
+    """Flask-Restful Implementation of API for Users."""
     def get(self, user_id):
+        """Checks to see if User record with id={user_id} exist, and if so serialize and return it.
+
+        Args:
+            user_id(int): Id of user to retrieve.
+
+        Returns:
+            Serialized dict/json data containing the information for one location and a status code of 200.
+        """
         abort_if_user_doesnt_exist(user_id)
         user = UserModel.query.get(user_id)
         return user.serialize
 
     def delete(self, user_id):
+        """Checks to see if  User record with id={user_id} exist, and if so deletes it.
+
+        Args:
+            user_id(int): Id of user to retrieve.
+
+        Returns:
+            Empty json message and a status code of 204.
+        """
         abort_if_user_doesnt_exist(user_id)
         user = UserModel.query.get(user_id)
         db.session.delete(user)
@@ -74,6 +98,14 @@ class User(Resource):
         return ('', 204)
 
     def put(self, user_id):
+        """Checks to see if User record with id={user_id} exist, and if so upadtes it with provided values.
+
+        Args:
+            user_id(int): Id of user to retrieve.
+
+        Returns:
+            Updated serialized dict/json data containing the information for one user and a status code of 201.
+        """
         abort_if_user_doesnt_exist(user_id)
         args = parser.parse_args()
         if bool(args['salted_hashed_password']) == bool(args['password']):
@@ -96,12 +128,22 @@ class User(Resource):
 
 
 class UserList(Resource):
-
+    """Flask-Restful Implementation of API to read and create User."""
     def get(self):
+        """Retrieve all User records.
+
+        Returns:
+            A list of Serialized dict/json data containing the information for one user each and a status code of 200.
+        """
         users = UserModel.query.all()
         return [user.serialize for user in users]
 
     def post(self):
+        """Creates a new User record.
+
+        Returns:
+            Serialized dict/json data containing the information for the newly added user and a status code of 201.
+        """
         args = parser.parse_args()
         user = UserModel(
 	        name=args['name'],

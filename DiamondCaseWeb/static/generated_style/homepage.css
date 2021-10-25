@@ -11,45 +11,48 @@
     text-align: center;
     padding: 10px; }
 
-    #homepage-video-text h1, #homepage-video-text h2 {
-      margin: 30px 0px; }
+    #homepage-video-text h1 {
+      margin: 30px 0px 0px 0px; }
 
-      #homepage-video-text button.cta {
-        margin: 30px 0px;
-        background-color: #6ba6ff;
-        font-size: 36px;
-        padding: 10px 20px; }
+      #homepage-video-text h2 {
+        margin: 0.5em 0px 0px 0px; }
 
-        #homepage-video-wrapper {
-          position: absolute;
-          z-index: 0;
-          top: 0;
-          left: 0; }
+        #homepage-video-text button.cta {
+          margin: 30px 0px;
+          background-color: #6ba6ff;
+          font-size: 36px;
+          padding: 10px 20px; }
 
-          #homepage-video-video {
-            min-height: 600px;
+          #homepage-video-wrapper {
             overflow: hidden;
-            width: 100%; }
+            margin-bottom: 30px; }
 
-            #homepage-main {
-              color: #ffffff; }
+            #homepage-video-video {
+              min-height: 600px;
+              overflow: hidden;
+              width: 100%;
+              object-fit: fill;
+              margin-top: -100px; }
 
-              #homepage-main h3 {
-                text-align: center; }
+              #homepage-main {
+                color: #ffffff; }
 
-                hr {
-                  margin-top: 1rem;
-                  margin-bottom: 1rem;
-                  border: 0;
-                  border-top: 1px solid white; }
+                #homepage-main h3 {
+                  text-align: center; }
 
-                  #homepage-featured a {
-                    text-decoration: none; }
-                    #homepage-featured img {
-                      margin: 0 auto; }
-                      #homepage-featured h3 {
-                        text-align: center; }
-                        #homepage-featured p {
-                          color: #ffffff; }
-                          #homepage-featured .homepage-download-app {
-                            blackground-color: black; }
+                  hr {
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                    border: 0;
+                    border-top: 1px solid white; }
+
+                    #homepage-featured a {
+                      text-decoration: none; }
+                      #homepage-featured img {
+                        margin: 0 auto; }
+                        #homepage-featured h3 {
+                          text-align: center; }
+                          #homepage-featured p {
+                            color: #ffffff; }
+                            #homepage-featured .homepage-download-app {
+                              blackground-color: black; }

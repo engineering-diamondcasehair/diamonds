@@ -5,7 +5,7 @@ from DiamondCaseWeb import create_app, db
 from DiamondCaseWeb.model.product import  Product, ProductCategory, LocationProduct
 from DiamondCaseWeb.model.static import HelpArticle, HomepageFeature
 from DiamondCaseWeb.model.user import Role, User
-
+	
 if __name__ == "__main__":
 	app = create_app()
 

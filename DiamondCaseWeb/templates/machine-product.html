@@ -11,9 +11,9 @@ Products
 {% endblock %}
 
 {% block content %}
-<h1 class="display-1"> Kiest Location: </h1>
+<h1 class="display-1"> {{location.name}} Location: </h1>
 <div id='product-menu-header' class="row">
-   {% for category in data %}
+   {% for category in categories %}
    {% if category.products %}
    <div class="product-menu-category col-sm-4 col-md-2 col-lg-2">
       <a href="#product-category-{{category.id}}">

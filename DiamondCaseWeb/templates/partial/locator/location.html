@@ -5,16 +5,14 @@
          <img src="{{location.image}}" class="img-thumbnail img-fluid  mx-auto d-bloc">
       </div>
       <div id="locator-listview" class="col-xs-12 col-md-6 col-lg-9">
-         {% for info in location.info %}
+
          <div class="row">
             <div class="col-xs-12">
-               <span><b>{{info.label}}:</b></span> 
-               <span>{{info.value}}</span>
+               <span>{{location.description}}</span>
             </div>
          </div>
          <br/>
-         {% endfor %}
-         <br/><a href="{{url_for('machine', machine_id=location.id)}}" class="btn btn-primary  mx-3"> <i class="fas fa-store mx-5"> Shop this location </i></a> <a href="https://goo.gl/maps/7GFUyfZHYZ2i6Gmu8" class="btn btn-secondary  mx-3"> <i class="fas fa-directions mx-4	;./">Directions to this location</i></a>
+         <br/><a href="{{location.direction_url}}" class="btn btn-primary mx-3"> <i class="fas fa-directions mx-4	;./">Directions to this location</i></a>
       </div>
    </div>
 </div>

@@ -2,7 +2,7 @@
    <div class="container-fluid">
       {# Brand Logo #}
       <a class="navbar-brand" href="{{url_for('static.index')}}">
-      <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo3.png" alt="Navigation Bar Logo">
+      <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Navigation Bar Logo">
       </a>
       {# Mobile Menu Button #}
       <button class="navbar-dark navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,13 +18,13 @@
                Product
                </a>
                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  {% for product in products %}
-                    <li><a class="dropdown-item" href="#">{{category.name}}</a></li>
+                  {% for category in categories %}
+                    <li><a class="dropdown-item" href="{{url_for('product.category', category_id=category.id)}}">{{category.name}}</a></li>
                   {% endfor %}
                   <li>
                      <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="#">All Products</a></li>
+                  <li><a class="dropdown-item" href="{{url_for('product.product')}}">All Products</a></li>
                </ul>
             </li>
             <li class="nav-item">
@@ -32,27 +32,6 @@
             </li>
             </li>
          </ul>
-         <div class="navbar-nav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-               <li class="nav-item mx-2">
-                  <a href="{{url_for('user.login')}}" style="color: black;"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
-               </li>
-               <li class="nav-item mx-2">
-                  <i class="fas fa-user"></i>
-               </li>
-               <li class="nav-item mx-2">
-                  <i class="fas fa-sign-out-alt"></i>
-               </li>
-               <li class="nav-item mx-1">
-                  <a href="{{url_for('shop.cart')}}" style="color: black;"><i class="fa" style="font-size:24px">&#xf07a;</i>
-                  <span class='badge badge-warning' id='lblCartCount'> 5 </span></a>
-               </li>
-            </ul>
-         </div>
-         <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search our products" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-         </form>
       </div>
    </div>
 </nav>

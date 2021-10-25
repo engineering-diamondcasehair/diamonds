@@ -106,13 +106,13 @@ var createFeatures = function(locations) {
         var feature = {
             'type': 'Feature',
             'properties': {
-                'description': '<a href="#location-' + locations[i].id + '"><strong>' + locations[i].name + '</strong><p>' + locations[i].address + '</p></a><p>' + locations[i].description + '</p>' + '<a href="/machine/' + locations[i].id + '" target="_blank">Shop Now!</a>',
+                'description': '<a href="#location-' + locations[i].id + '"><strong>' + locations[i].name + '</strong><p>' + locations[i].location.address1 + '</p></a><p>' + locations[i].description + '</p>',
                 'icon': 'bar-15'
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [locations[i].coordinates.longitude,
-                    locations[i].coordinates.lattitude
+                'coordinates': [locations[i].location.coordinates.longitude,
+                    locations[i].location.coordinates.latitude
                 ]
             }
         };
@@ -150,13 +150,13 @@ var g_pos;
 
 var error = function(e) {
     alert(e);
-    var locations = data.locations.sort(function compareFn(firstEl, secondEl) {
+    var locations = data.sort(function compareFn(firstEl, secondEl) {
         var dist1 = getDIstance(32.7767, -96.7970,
-            firstEl.coordinates.lattitude,
-            firstEl.coordinates.longitude);
+            firstEl.location.coordinates.lattitude,
+            firstEl.location.coordinates.longitude);
         var dist2 = getDIstance(32.7767, -96.7970,
-            secondEl.coordinates.lattitude,
-            secondEl.coordinates.longitude);
+            secondEl.location.coordinates.lattitude,
+            secondEl.location.coordinates.longitude);
         return dist1 - dist2;
     });
 
@@ -179,11 +179,11 @@ var success = function(pos) {
     g_pos = pos; // assign to global
     var locations = data.locations.sort(function compareFn(firstEl, secondEl) {
         var dist1 = getDIstance(32.7767, -96.7970,
-            firstEl.coordinates.lattitude,
-            firstEl.coordinates.longitude);
+            firstEl.location.coordinates.lattitude,
+            firstEl.location.coordinates.longitude);
         var dist2 = getDIstance(32.7767, -96.7970,
-            secondEl.coordinates.lattitude,
-            secondEl.coordinates.longitude);
+            secondEl.location.coordinates.lattitude,
+            secondEl.location.coordinates.longitude);
         return dist1 - dist2;
     });
 
@@ -201,16 +201,14 @@ var success = function(pos) {
     for (var i = 0; i < locations.length; i++) {
         var location = locations[i];
         var info_html = '';
-        for (var j = 0; j < location.info.length; j++) {
-            info = location.info[j];
-            info_html = info_html + '<div class="row"> \
-										<div class="col-xs-12"> \
-											<span><b>' + info.label + ':</b></span> \
-											<span>' + info.value + '</span> \
-										</div> \
+    
+        info_html = info_html + '<div class="row"> \
+									<div class="col-xs-12"> \
+										<span>' + location.description + '</span> \
 									</div> \
-									<br/>';
-        }
+								</div> \
+								<br/>';
+    
 
 
         $("#locator-listview").append('<li> \
@@ -222,7 +220,7 @@ var success = function(pos) {
 						</div> \
 						<div class="col-xs-12 col-md-6 col-lg-9">' +
             info_html +
-            '<br/><a href="/shop/' + parseInt(location.id) + '" class="btn btn-primary mx-3"> <i class="fas fa-store mx-5"> Shop this location </i></a> <a href="' + location.direction_link + '" class="btn btn-secondary mx-5"> <i class="fas fa-directions mx-3"> Directions to this location </i></a> \
+            '<br/><a href="' + location.direction_link + '" class="btn tn-primary mx-5"> <i class="fas fa-directions mx-3"> Directions to this location </i></a> \
 			       </div> \
 				    </div> \
 				</div> \

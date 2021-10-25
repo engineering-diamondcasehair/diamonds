@@ -8,17 +8,19 @@ from DiamondCaseWeb.model.static import HomepageFeature as HomepageFeatureModel
 from DiamondCaseWeb.model.static import HelpArticle as HelpArticleModel
 from DiamondCaseWeb.model.user import Role as RoleModel
 from DiamondCaseWeb.model.user import User as UserModel 
-from DiamondCaseWeb import create_app
+# from DiamondCaseWeb.model.user import Order as OrderModel 
+from DiamondCaseWeb import create_app, db
 
 
 def load_products():
     """Load users from u.user into database."""
 
-    for i, row in enumerate(open("seed_data/cataegory.product")):
+    for i, row in enumerate(open("seed_data/category.product")):
         row = row.rstrip()
-        name = row.split("|")
+        name, = row.split("|")
         product_category = ProductCategoryModel(name=name)
         db.session.add(product_category)
+        db.session.commit()
 
     for i, row in enumerate(open("seed_data/product.product")):
         row = row.rstrip()
@@ -26,16 +28,17 @@ def load_products():
         product = ProductModel(name=name,
             short_description=short_description,
             long_description=long_description,
-            product_category_id=product_category_id,
+            product_category_id=int(product_category_id),
             img_path_xs=img_path_xs,
             img_path_sm=img_path_sm,
             img_path_md=img_path_md,
             img_path_lg=img_path_lg)
         db.session.add(product)
+        db.session.commit()
 
     for i, row in enumerate(open("seed_data/location.product")):
         row = row.rstrip()
-        name, description, address1, address2, city, state, zip_code, country, latitude, longitude, , direction_url = row.split("|")
+        name, description, address1, address2, city, state, zip_code, country, latitude, longitude, direction_url, image = row.split("|")
         location = LocationModel(name=name,
             description=description,
             address1=address1,
@@ -46,8 +49,10 @@ def load_products():
             country=country,
             latitude=latitude,
             longitude=longitude,
-            direction_url=direction_url)
+            direction_url=direction_url,
+            image=image)
         db.session.add(location)
+        db.session.commit()
 
     for i, row in enumerate(open("seed_data/location_product.product")):
         row = row.rstrip()
@@ -57,8 +62,9 @@ def load_products():
             price=price,
             num_available=num_available)
         db.session.add(location_product)
+        db.session.commit()
 
-    db.session.commit()
+    
 
 
 def load_static():
@@ -99,13 +105,22 @@ def load_user():
     for i, row in enumerate(open("seed_data/user.user")):
         row = row.rstrip()
         name, phone, email, password, confirmed_at, role_id = row.split("|")
-        help_article = UserModel(name=name,
+        user = UserModel(name=name,
             phone=phone,
             email=email,
             password=password,
             confirmed_at=confirmed_at,
             role_id=role_id)
-        db.session.add(help_article)
+        db.session.add(user)
+
+    # for i, row in enumerate(open("seed_data/order.user")):
+    #     row = row.rstrip()
+    #     active, user_id, product_location_id = row.split("|")
+    #     order = OrderrModel(
+    #         active=active, 
+    #         user_id=user_id, 
+    #         product_location_id=product_location_id)
+    #     db.session.add(order)
 
     db.session.commit()
 
@@ -114,9 +129,9 @@ if __name__ == "__main__":
     app = create_app()
     app.config.from_object('DiamondCaseWeb.config.DevelopmentConfig')
     db.init_app(app)
-    db.drop_all()
-    db.create_all()
-
-    load_products()
-    load_static()
-    load_user()
+    with app.app_context():
+        db.drop_all()
+        db.create_all()
+        load_products()
+        load_static()
+        load_user()

@@ -1,3 +1,4 @@
+""" Stores configuration for develoment, testing, and prodution flask app."""
 import os
 
 class Config(object):

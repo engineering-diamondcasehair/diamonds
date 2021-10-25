@@ -1,9 +1,15 @@
+"""File use to register static assests."""
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from flask_assets import Environment, Bundle
 
 
 def register_assets(app):
+    """Creates css assests from scss files and register them wiyj the flask app.
+        
+        Args:
+            app(Flask.app): Flask app that assest are registered with.
+        """
     assets = Environment(app)
     assets.url = app.static_url_path
     homepage_css = Bundle('style/homepage.scss', filters='pyscss',
@@ -36,6 +42,8 @@ def register_assets(app):
                       output='generated_style/help.css')
     term_css = Bundle('style/term.scss', filters='pyscss',
                       output='generated_style/term.css')
+    header_css = Bundle('style/header.scss', filters='pyscss',
+                      output='generated_style/header.css')
 
     assets.register('homepage_css', homepage_css)
     assets.register('locator_css', locator_css)
@@ -50,3 +58,4 @@ def register_assets(app):
     assets.register('help_css', help_css)
     assets.register('term_css', term_css)
     assets.register('base_css', base_css)
+    assets.register('header_css', header_css)

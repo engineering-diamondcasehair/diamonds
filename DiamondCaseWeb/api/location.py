@@ -1,3 +1,5 @@
+"""API code for Locations."""
+
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from DiamondCaseWeb import db
@@ -9,10 +11,16 @@ from flask_restful import reqparse
 from flask_restful import Resource
 from flask_restful import url_for
 
+# Register blueprint For location Api
 blueprint = Blueprint('location_api', __name__)
 api = Api(blueprint)
 
 def abort_if_location_doesnt_exist(location_id):
+    """Checks to see if Location record with id={location_id} exist, if not the function aborts the requset with 404 status code.
+
+    Args:
+        location_id(int): Id of location to retrieve
+    """
     if not LocationModel.query.get(location_id):
         abort(404,
               message="location_id {} doesn't exist".format(location_id))
@@ -33,13 +41,29 @@ parser.add_argument('direction_url')
 
 
 class Location(Resource):
-
+    """Flask-Restful Implementation of API for Locations."""
     def get(self, location_id):
+        """Checks to see if  Location record with id={location_id} exist, and if so serialize and return it.
+
+        Args:
+            location_id(int): Id of location to retrieve.
+
+        Returns:
+            Serialized dict/json data containing the information for one location and a status code of 200.
+        """
         abort_if_location_doesnt_exist(location_id)
         location = LocationModel.query.get(location_id)
         return location.serialize
 
     def delete(self, location_id):
+        """Checks to see if  Location record with id={location_id} exist, and if so deletes it.
+
+        Args:
+            location_id(int): Id of location to retrieve.
+
+        Returns:
+            Empty json message and a status code of 204.
+        """
         abort_if_location_doesnt_exist(location_id)
         location = LocationModel.query.get(location_id)
         db.session.delete(location)
@@ -47,6 +71,14 @@ class Location(Resource):
         return ('', 204)
 
     def put(self, location_id):
+        """Checks to see if Location record with id={location_id} exist, and if so upadtes it with provided values.
+
+        Args:
+            location_id(int): Id of location to retrieve.
+
+        Returns:
+            Updated serialized dict/json data containing the information for one location and a status code of 201.
+        """
         args = parser.parse_args()
         location = LocationModel.query.get(location_id)
         location.name = args['name']
@@ -65,12 +97,22 @@ class Location(Resource):
 
 
 class LocationList(Resource):
-
+    """Flask-Restful Implementation of API to read and create Location."""
     def get(self):
+        """Retrieve all Location records.
+
+        Returns:
+            A list of Serialized dict/json data containing the information for one location each and a status code of 200.
+        """
         locations = LocationModel.query.all()
         return [location.serialize for location in locations]
 
     def post(self):
+        """Creates a new Location record.
+
+        Returns:
+            Serialized dict/json data containing the information for the newly added location and a status code of 201.
+        """
         args = parser.parse_args()
         location = LocationModel(
             name=args['name'],

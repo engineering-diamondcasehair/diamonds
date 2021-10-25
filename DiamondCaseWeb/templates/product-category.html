@@ -11,16 +11,16 @@ Products
 {% endblock %}
 
 {% block content %}
-<h1> {{data.category}}: </h1>
+<h1> {{category.name}}: </h1>
 <div id="product-category-view" class="row align-items-center">
    {# Product Card#}
-   {% for product in data.products %}
+   {% for product in category.products %}
    <div id="product-category-card" class="product-category-product col-xs-12 col-lg-4" data-bs-toggle="modal" data-bs-target="#modal-{{product.id}}">
       <div class="card" style="margin: 25px;">
-         <img src="{{product.image}}" class="card-img-top" alt="...">
+         <img src="{{ url_for('static', filename='images/products/'+product.img_path_lg) }}" class="card-img-top" alt="...">
          <div class="card-body">
             <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">{{product.description}}</p>
+            <p class="card-text">{{product.short_description}}</p>
          </div>
       </div>
    </div>
@@ -28,16 +28,15 @@ Products
    <div class="modal fade" id="modal-{{product.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-{{product.id}}-label" aria-hidden="true">
       <div class="modal-dialog">
          <div class="modal-content">
-            <img src="{{product.image}}" class="card-img-top" alt="...">
+            <img src="{{ url_for('static', filename='images/products/'+product.img_path_lg) }}" class="card-img-top" alt="...">
             <div class="modal-header">
                <h5 class="modal-title" id="modal-{{product.id}}-label">{{product.name}}</h5>
             </div>
             <div class="modal-body">
-               {{product.description}}
+               {{product.long_description}}
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary float-left" data-bs-dismiss="modal">Close</button>
-               <button type="button" class="btn btn-primary float-right">Find a Location with this product</button>
+               <button type="button" class="btn btn-primary float-left" data-bs-dismiss="modal">Close</button>
             </div>
          </div>
       </div>

@@ -1,2 +1,2 @@
-Hair
-Men's
+customer|User has customer permissions only.
+admin|User has customer and administration permissions.

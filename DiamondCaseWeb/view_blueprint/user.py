@@ -1,5 +1,7 @@
+"""Blueprint for user pages."""
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 from flask import Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form
@@ -18,7 +20,7 @@ hash_val = 'hash'
 db = SQLAlchemy()
 
 class LoginForm(Form):
-
+    """WTForm implementation of login form."""
     email = StringField('Email Address', [validators.Length(min=6,
                         max=60)])
     password = PasswordField('Password', [validators.DataRequired()])
@@ -26,7 +28,7 @@ class LoginForm(Form):
 
 
 class RegistrationForm(Form):
-
+    """WTForm implementation of registration form."""
     email = StringField('Email Address', [validators.Length(min=6,
                         max=35)])
     password = PasswordField('New Password',
@@ -38,13 +40,13 @@ class RegistrationForm(Form):
                               [validators.DataRequired()])
 
 
-
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-
 @blueprint.route('/login', methods=['GET', 'POST'])
 def login():
+    """View Function for login page.
+
+    Returns:
+        rendered template of view
+    """
     form = LoginForm()
     if form.validate_on_submit():
         user = model.User.quert.filter(email=form.email).one()
@@ -62,6 +64,11 @@ def login():
 
 @blueprint.route('/signup')
 def signup():
+    """View Function for signup page.
+
+    Returns:
+        rendered template of view
+    """
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
         user = User(name=form.username.data,
@@ -82,16 +89,31 @@ def signup():
 
 @blueprint.route('/logout')
 def logout():
+    """View Function for logout page.
+
+    Returns:
+        rendered template of view
+    """
     logout_user()
     return redirect(flask.url_for('index'))
 
 
 @blueprint.route('/settings')
 def settings():
+    """View Function for settings page.
+
+    Returns:
+        rendered template of view
+    """
     pass
 
 @blueprint.route('/profile')
 def profile():
+    """View Function for profile page.
+
+    Returns:
+        rendered template of view
+    """
     return render_template('profile.html', content='Profile Page',
                            twitter_conn=social.twitter.get_connection(),
                            facebook_conn=social.facebook.get_connection(),

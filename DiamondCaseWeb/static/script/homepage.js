@@ -14,7 +14,7 @@ var setVideoHeight = function() {
         })
 
         // Set the container height
-        $("#homepage-video-wrapper").height(biggestHeight);
+        $("#homepage-video-wrapper").height(biggestHeight/1.01);
         $("#homepage-video-text").height(biggestHeight);
     });
 }

@@ -1,3 +1,4 @@
+"""Main file for Web app creation."""
 from DiamondCaseWeb.util import assets
 from DiamondCaseWeb.util import dc_mail
 from flask import Flask

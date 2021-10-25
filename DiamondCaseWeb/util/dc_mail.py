@@ -1,3 +1,4 @@
+"""File use to facilitate email service."""
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from flask_mail import Mail
@@ -8,6 +9,10 @@ RECIPIENTS = ['mailbox@diamondcasehair.com',
 
 
 def setup_mail(app):
+    """Sets up mail utility with Flask app.
+    Args:
+        app(Flask.app): Flask app that assest are registered with.
+    """
     return Mail(app)
 
 
@@ -18,6 +23,14 @@ def send_message_to_dc(
     app,
     mail,
     ):
+    """Sends message with flask mail.
+    Args:
+        sender(str): Email address of message sender.
+        subject(str): Subject of message.
+        message(str): Body of message.
+        app(Flask.app): Flask app that assest are registered with.
+        mail(Flask_mail): flask_mail object.
+    """
     message = Message(body=message, sender=sender, recipients=RECIPIENTS,
                       reply_to='no-reply@diamondcase.com')
     message.subject = subject
@@ -26,6 +39,11 @@ def send_message_to_dc(
 
 
 def log_message(message, app):
+    """Logs emails sent from web app.
+    Args:
+        message(flask_mail.Message): Flask app that assest are registered with.
+        app(Flask.app): Flask app that assest are registered with.
+    """
     log_msg = f"""
         Message(
             'subject': {message.subject},

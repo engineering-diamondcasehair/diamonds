@@ -1,3 +1,5 @@
+"""API code for Homepage Features."""
+
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from DiamondCaseWeb import db
@@ -9,13 +11,19 @@ from flask_restful import reqparse
 from flask_restful import Resource
 from flask_restful import url_for
 
+# Register blueprint For help article Api
 blueprint = Blueprint('homepagefeature_api', __name__)
 api = Api(blueprint)
 
-def abort_if_homepage_features_doesnt_exist(homepage_features_id):
+def abort_if_homepage_features_doesnt_exist(homepage_feature_id):
+    """Checks to see if Homepage Features record with id={homepage_feature_id} exist, if not the function aborts the requset with 404 status code.
+
+    Args:
+        homepage_feature_id(int): Id of homepage feature to retrieve
+    """
     if not HomepageFeatureModel.query.get(homepage_features_id):
         abort(404,
-              message="homepage_features_id {} doesn't exist".format(homepage_features_id))
+              message="homepage_features_id {} doesn't exist".format(homepage_feature_id))
 
 
 parser = reqparse.RequestParser()
@@ -50,13 +58,29 @@ parser.add_argument('is_active',
 
 
 class HomepageFeature(Resource):
-
+    """Flask-Restful Implementation of API for Homepage Features."""
     def get(self, homepage_feature_id):
+        """Checks to see if  Homepage Feature record with id={help_article_id} exist, and if so serialize and return it.
+
+        Args:
+            homepage_feature_id(int): Id of help article to retrieve.
+
+        Returns:
+            Serialized dict/json data containing the information for one article and a status code of 200.
+        """
         abort_if_homepage_features_doesnt_exist(homepage_feature_id)
         feature = HomepageFeatureModel.query.get(homepage_feature_id)
         return feature.serialize
 
     def delete(self, homepage_feature_id):
+        """Checks to see if  Homepage Feature record with id={homepage_feature_id} exist, and if so deletes it.
+
+        Args:
+            homepage_feature_id(int): Id of homepage feature to retrieve.
+
+        Returns:
+            Empty json message and a status code of 204.
+        """
         abort_if_homepage_features_doesnt_exist(homepage_feature_id)
         feature = HomepageFeatureModel.query.get(homepage_feature_id)
         db.session.delete(feature)
@@ -64,6 +88,14 @@ class HomepageFeature(Resource):
         return ('', 204)
 
     def put(self, homepage_feature_id):
+        """Checks to see if  Homepage Feature record with id={homepage_feature_id} exist, and if so upadtes it with provided values.
+
+        Args:
+            homepage_feature_id(int): Id of homepage feature to retrieve.
+
+        Returns:
+            Updated serialized dict/json data containing the information for one homepage feature and a status code of 201.
+        """
         args = parser.parse_args()
         feature = HomepageFeatureModel.query.get(homepage_feature_id)
         feature.title = args['title']
@@ -80,10 +112,20 @@ class HomepageFeature(Resource):
 class HomepageFeatureList(Resource):
 
     def get(self):
+        """Retrieve all Homepage Feature records.
+
+        Returns:
+            A list of serialized dict/json data containing the information for one homepage Feature each and a status code of 200.
+        """
         features = HomepageFeatureModel.query.all()
         return [feature.serialize for feature in features]
 
     def post(self):
+        """Creates a new Homepage Feature record.
+
+        Returns:
+            Serialized dict/json data containing the information for the newly added Homepage Feature and a status code of 201.
+        """
         args = parser.parse_args()
         feature = HomepageFeatureModel(
             title=args['title'],

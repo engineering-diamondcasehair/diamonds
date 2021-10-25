@@ -4,3 +4,6 @@ body {
   form, .side {
     background-color: #80d6ff;
     color: #000000; }
+
+    p.signature {
+      text-align: right; }
